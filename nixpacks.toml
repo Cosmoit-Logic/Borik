@@ -1,10 +1,12 @@
-# nixpacks.toml (Новая, более простая и надежная версия)
+# nixpacks.toml (Финальная исправленная версия)
 
 [phases.install]
-# Указываем точные команды. Сначала ставим Python-пакеты.
-# Затем запускаем установку Playwright с флагом --with-deps.
-# Этот флаг сам скачает браузеры И установит все нужные системные зависимости.
+# Объединяем все команды в одну с помощью "&&".
+# Это гарантирует, что они выполняются последовательно в правильном окружении.
+# 1. Создаем виртуальное окружение Python
+# 2. Активируем его (это делает команду pip доступной)
+# 3. Устанавливаем пакеты из requirements.txt
+# 4. Скачиваем браузеры для Playwright и их зависимости
 cmds = [
-    "pip install -r requirements.txt",
-    "playwright install --with-deps"
+    "python -m venv --copies /opt/venv && . /opt/venv/bin/activate && pip install -r requirements.txt && playwright install --with-deps"
 ]
