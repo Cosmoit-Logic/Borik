@@ -2,6 +2,7 @@
 import asyncio
 import json
 import logging
+import traceback
 import os
 from contextlib import suppress
 from playwright.async_api import async_playwright
