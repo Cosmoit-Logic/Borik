@@ -1,9 +1,10 @@
-# nixpacks.toml
+# nixpacks.toml (Новая, более простая и надежная версия)
 
-[phases.setup]
-# Обновленный список системных библиотек для современных версий Linux (Ubuntu 24.04+)
-# Заменены libasound2 -> libasound2t64 и libcups2 -> libcups2t64
-aptPkgs = [
-    "libnss3", "libatk1.0-0", "libatk-bridge2.0-0", "libcups2t64",
-    "libgtk-3-0", "libgbm-dev", "libxss1", "libasound2t64", "libdbus-glib-1-2"
+[phases.install]
+# Указываем точные команды. Сначала ставим Python-пакеты.
+# Затем запускаем установку Playwright с флагом --with-deps.
+# Этот флаг сам скачает браузеры И установит все нужные системные зависимости.
+cmds = [
+    "pip install -r requirements.txt",
+    "playwright install --with-deps"
 ]
