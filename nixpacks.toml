@@ -1,9 +1,9 @@
 # nixpacks.toml
 
-# Указываем, какие системные пакеты нужно установить с помощью apt-get
-# Это зависимости, необходимые Playwright/Chromium для работы в headless-режиме на Linux
 [phases.setup]
+# Обновленный список системных библиотек для современных версий Linux (Ubuntu 24.04+)
+# Заменены libasound2 -> libasound2t64 и libcups2 -> libcups2t64
 aptPkgs = [
-    "libnss3", "libatk1.0-0", "libatk-bridge2.0-0", "libcups2",
-    "libgtk-3-0", "libgbm-dev", "libxss1", "libasound2", "libdbus-glib-1-2"
+    "libnss3", "libatk1.0-0", "libatk-bridge2.0-0", "libcups2t64",
+    "libgtk-3-0", "libgbm-dev", "libxss1", "libasound2t64", "libdbus-glib-1-2"
 ]
